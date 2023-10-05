@@ -43,7 +43,7 @@ body {
 .container {
   margin: auto;
   width: 52.5rem;
-  height: 41rem;
+  /* height: 41rem; */
   background-color: var(--white);
   padding: 3rem;
   border-radius: 1.5rem 1.5rem 12rem 1.5rem;
@@ -65,7 +65,8 @@ body {
 
 input {
   all: unset;
-  width: 8.5rem;
+  max-width: 8.5rem;
+  min-width: 5.5rem;
   height: 3.75rem;
   font-size: 32px;
   border-radius: 0.5rem;
@@ -79,6 +80,12 @@ input {
 input:focus,
 input:hover {
   border-color: var(--off-black);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 label {
@@ -118,7 +125,7 @@ button:active {
 }
 
 hr {
-  height: 1px;
+  height: 2px;
   background-color: var(--light-grey);
   border: none;
 }
@@ -143,4 +150,48 @@ hr {
 
 .invalid-input {
   border-color: red;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 21.5rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem 1.5rem 6rem 1.5rem;
+  }
+
+  #dateForm {
+    gap: 1rem;
+  }
+
+  input {
+    box-sizing: border-box;
+    width: 80px;
+    font-size: 20px;
+    padding: 0.5rem;
+    height: 3.25rem;
+  }
+
+  .error {
+    width: 80px;
+    bottom: -3rem;
+  }
+
+  button {
+    transform: scale(0.75);
+    right: calc(50% - 50px);
+    transition: none;
+    bottom: calc(-5.5rem - 50px);
+  }
+
+  button:hover {
+    transform: scale(0.75);
+  }
+
+  hr {
+    margin: 1.75rem 0;
+  }
+
+  .result {
+    font-size: 3rem;
+  }
 }
