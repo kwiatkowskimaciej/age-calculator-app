@@ -4,10 +4,16 @@ function isValidDate(date) {
 
 function validateDateInput(year, month, day) {
   const date = new Date(year, month - 1, day);
+  const today = new Date();
 
-  console.log(month);
-  console.log(date.getMonth());
-  if (isValidDate(date) && date.getMonth() + 1 == month) {
+  const dateTime = date.getTime();
+  const todayTime = today.getTime();
+
+  if (
+    isValidDate(date) &&
+    date.getMonth() + 1 == month &&
+    dateTime < todayTime
+  ) {
     return date;
   }
 
@@ -34,6 +40,8 @@ const dayInput = document.getElementById('day');
 
 dayInput.addEventListener('invalid', (e) => {
   e.preventDefault();
+  document.querySelector('.day').classList.add('invalid-label');
+  document.getElementById('day').classList.add('invalid-input');
   if (dayInput.value == '') {
     document.querySelector(`.day-error`).innerHTML = 'This field is required';
   } else {
@@ -44,6 +52,8 @@ dayInput.addEventListener('invalid', (e) => {
 
 dayInput.addEventListener('input', () => {
   if (dayInput.validity.valid) {
+    document.querySelector('.day').classList.remove('invalid-label');
+    document.getElementById('day').classList.remove('invalid-input');
     document.querySelector(`.day-error`).style.display = 'none';
   }
 });
@@ -52,6 +62,8 @@ const monthInput = document.getElementById('month');
 
 monthInput.addEventListener('invalid', (e) => {
   e.preventDefault();
+  document.querySelector('.month').classList.add('invalid-label');
+  document.getElementById('month').classList.add('invalid-input');
   if (monthInput.value == '') {
     document.querySelector(`.month-error`).innerHTML = 'This field is required';
   } else {
@@ -62,6 +74,8 @@ monthInput.addEventListener('invalid', (e) => {
 
 monthInput.addEventListener('input', () => {
   if (monthInput.validity.valid) {
+    document.querySelector('.month').classList.remove('invalid-label');
+    document.getElementById('month').classList.remove('invalid-input');
     document.querySelector(`.month-error`).style.display = 'none';
   }
 });
@@ -71,6 +85,8 @@ yearInput.max = new Date().getFullYear();
 
 yearInput.addEventListener('invalid', (e) => {
   e.preventDefault();
+  document.querySelector('.year').classList.add('invalid-label');
+  document.getElementById('year').classList.add('invalid-input');
   if (yearInput.value == '') {
     document.querySelector(`.year-error`).innerHTML = 'This field is required';
   } else {
@@ -81,6 +97,8 @@ yearInput.addEventListener('invalid', (e) => {
 
 yearInput.addEventListener('input', () => {
   if (yearInput.validity.valid) {
+    document.querySelector('.year').classList.remove('invalid-label');
+    document.getElementById('year').classList.remove('invalid-input');
     document.querySelector(`.year-error`).style.display = 'none';
   }
 });
@@ -95,6 +113,8 @@ dateForm.addEventListener('submit', (e) => {
   let year = document.getElementById('year').value;
 
   const date = validateDateInput(year, month, day);
+  const today = new Date();
+
   if (
     !date &&
     dayInput.validity.valid &&
@@ -106,7 +126,7 @@ dateForm.addEventListener('submit', (e) => {
     return false;
   }
 
-  const today = new Date();
+  document.querySelector('.date-error').style.display = 'none';
 
   let diff = today - date;
   let seconds = Math.floor(diff / 1000),

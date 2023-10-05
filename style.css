@@ -1,0 +1,146 @@
+:root {
+  --purple: hsl(259, 100%, 65%);
+  --light-red: hsl(0, 100%, 67%);
+  --white: hsl(0, 0%, 100%);
+  --off-white: hsl(0, 0%, 94%);
+  --light-grey: hsl(0, 0%, 86%);
+  --smokey-grey: hsl(0, 1%, 44%);
+  --off-black: hsl(0, 0%, 8%);
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(assets/fonts/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: Poppins-ExtraBold-Italic;
+  src: url(assets/fonts/Poppins-ExtraBoldItalic.ttf);
+}
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(assets/fonts/Poppins-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--off-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins-Regular;
+  color: var(--off-black);
+}
+
+.container {
+  margin: auto;
+  width: 52.5rem;
+  height: 41rem;
+  background-color: var(--white);
+  padding: 3rem;
+  border-radius: 1.5rem 1.5rem 12rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#dateForm {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+#dateForm div {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  all: unset;
+  width: 8.5rem;
+  height: 3.75rem;
+  font-size: 32px;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  border-color: var(--light-grey);
+  padding-left: 1.5rem;
+  font-family: Poppins-Bold;
+  color: var(--off-black);
+}
+
+input:focus,
+input:hover {
+  border-color: var(--off-black);
+}
+
+label {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.25rem;
+  font-family: Poppins-Bold;
+  color: var(--smokey-grey);
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  bottom: calc(-3.5rem - 50px);
+  border-radius: 100%;
+  border: none;
+  background-color: var(--purple);
+  transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+button:active {
+  background-color: var(--off-black);
+}
+
+.error {
+  font-size: 14px;
+  color: var(--light-red);
+  position: absolute;
+  bottom: -1.5rem;
+}
+
+hr {
+  height: 1px;
+  background-color: var(--light-grey);
+  border: none;
+}
+
+.result {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  font-size: 5rem;
+  font-family: Poppins-ExtraBold-Italic;
+}
+
+.result div span {
+  color: var(--purple);
+}
+
+.invalid-label {
+  color: var(--light-red);
+}
+
+.invalid-input {
+  border-color: red;
+}
